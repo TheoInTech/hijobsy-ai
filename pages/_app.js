@@ -4,7 +4,9 @@ import { ArNext } from "arnext";
 import { Inter, Work_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
-// import { WalletProvider } from "@/providers/wallet-provider";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/custom/";
+import { WalletProvider } from "@/providers/wallet-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,9 +29,12 @@ export default function App(props) {
         enableSystem
         disableTransitionOnChange
       >
-        {/* <WalletProvider> */}
-        <ArNext {...props}>{props.children}</ArNext>
-        {/* </WalletProvider> */}
+        <WalletProvider>
+          <SidebarProvider>
+            <AppSidebar />
+            <ArNext {...props}>{props.children}</ArNext>
+          </SidebarProvider>
+        </WalletProvider>
       </ThemeProvider>
     </main>
   );

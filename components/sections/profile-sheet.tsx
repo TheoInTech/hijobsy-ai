@@ -5,25 +5,22 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet";
-import { ConnectLinkedin, UploadCv } from "@/components/custom";
+import { User as UserIcon } from "@phosphor-icons/react";
+import { ConnectLinkedin, SendButton, UploadCv } from "@/components/custom";
 import { Textarea } from "@/components/ui/textarea";
 import { useStore } from "@/store";
 
 export const ProfileSheet = () => {
-  const { isProfileCreated } = useStore();
+  const { isOpenProfileSheet, toggleIsOpenProfileSheet } = useStore();
 
   return (
-    <Sheet>
-      {!isProfileCreated && (
-        <SheetTrigger className="flex absolute top-0 right-0 bottom-0 left-0 flex-col gap-4 justify-center items-center w-full h-full rounded-2xl backdrop-blur-[1.6px] duration-300 hover:brightness-105 bg-background/20">
-          Create your profile first
-        </SheetTrigger>
-      )}
+    <Sheet open={isOpenProfileSheet} onOpenChange={toggleIsOpenProfileSheet}>
       <SheetContent className="flex overflow-y-auto flex-col gap-4">
         <SheetHeader>
-          <SheetTitle>Your profile</SheetTitle>
+          <SheetTitle className="flex gap-2 items-center">
+            <UserIcon size={24} className="text-foreground/80" /> Your profile
+          </SheetTitle>
           <SheetDescription>
             We don&apos;t want you to fill this out again and again. Set it up
             once and we&apos;ll always use it in your job hunt!
@@ -33,8 +30,9 @@ export const ProfileSheet = () => {
         <div className="flex flex-col gap-4">
           <ConnectLinkedin />
           <UploadCv />
-          <Textarea
-            placeholder={`Tell us about yourself...
+          <div className="relative">
+            <Textarea
+              placeholder={`Tell us about yourself...
 
 Summary:
 I am a [role] with [X] years of experience in [industry/field]. Passionate about [key interests/specialties].
@@ -54,8 +52,10 @@ Skills
 - Skill 1
 - Skill 2
 - Skill 3`}
-            className="w-full rounded-lg bg-background min-h-[600px] h-full"
-          />
+              className="w-full rounded-lg bg-background min-h-[480px] h-full"
+            />
+            <SendButton className="z-10" onClick={() => alert("Send prompt")} />
+          </div>
         </div>
       </SheetContent>
     </Sheet>

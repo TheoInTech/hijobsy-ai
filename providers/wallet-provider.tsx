@@ -1,8 +1,7 @@
 "use client";
 
 import { AppInfo, PermissionType } from "arconnect";
-import { ArweaveWalletKit } from "arweave-wallet-kit";
-import { ReactNode } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 
 const WALLET_PERMISSIONS: PermissionType[] = [
   "ACCESS_ADDRESS",
@@ -16,25 +15,60 @@ const APP_INFO: AppInfo = {
   name: "Jobsy",
 };
 
+interface WalletContextType {
+  connectWallet: () => Promise<{ success: boolean }>;
+  fetchUserBalance: () => Promise<void>;
+  userAddress: string;
+}
+
+const WalletContext = createContext<WalletContextType>({} as WalletContextType);
+
 interface IWalletProvider {
   children: ReactNode;
 }
 
 export const WalletProvider = ({ children }: IWalletProvider) => {
+  const [userAddress, setUserAddress] = useState<string>();
+
+  const connectWallet = async () => {
+    try {
+      await globalThis.arweaveWallet.connect([
+        "ACCESS_ADDRESS",
+        "SIGN_TRANSACTION",
+      ]);
+      return { success: true };
+    } catch (error) {
+      console.error("Failed to connect wallet:", error);
+    }
+  };
+
+  const fetchUserBalance = async () => {
+    const _connected = await connectWallet();
+    if (_connected.success === false) {
+      return;
+    }
+
+    try {
+      const address = await globalThis.arweaveWallet.getActiveAddress();
+      setUserAddress(address);
+    } catch (e) {
+      console.error("fetchUserBalance() error!", e);
+    }
+  };
+
   return (
-    <ArweaveWalletKit
-      config={{
-        ensurePermissions: true,
-        permissions: WALLET_PERMISSIONS,
-        appInfo: APP_INFO,
-      }}
-      theme={{
-        displayTheme: "dark",
-        radius: "minimal",
-        titleHighlight: { r: 255, g: 255, b: 255 },
-      }}
+    <WalletContext.Provider
+      value={{ connectWallet, fetchUserBalance, userAddress }}
     >
       {children}
-    </ArweaveWalletKit>
+    </WalletContext.Provider>
   );
+};
+
+export const useWallet = () => {
+  const context = useContext(WalletContext);
+  if (!context) {
+    throw new Error("useAppContext must be used within an AppProvider");
+  }
+  return context;
 };

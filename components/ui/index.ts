@@ -48,3 +48,5 @@ export {
   TooltipProvider,
 } from "./tooltip";
 export { Toaster } from "./toaster";
+export { Sidebar, SidebarTrigger } from "./sidebar";
+export { Input } from "./input";
