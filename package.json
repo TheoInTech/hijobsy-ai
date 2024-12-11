@@ -14,6 +14,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "@permaweb/aoconnect": "^0.0.62",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-scroll-area": "^1.2.1",
@@ -23,8 +24,10 @@
     "@radix-ui/react-toast": "^1.2.2",
     "@radix-ui/react-tooltip": "^1.1.4",
     "arnext": "^0.1.4",
+    "arweave-wallet-kit": "^1.0.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.13.5",
     "lucide-react": "^0.465.0",
     "next": "14.2.13",
     "next-themes": "^0.4.4",

@@ -3,6 +3,8 @@ import { StateCreator } from "zustand";
 export interface CommonSlice {
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
+  isProfileCreated: boolean;
+  setIsProfileCreated: (isProfileCreated: boolean) => void;
 }
 
 export const createCommonSlice: StateCreator<
@@ -13,4 +15,7 @@ export const createCommonSlice: StateCreator<
 > = (set) => ({
   isLoading: false,
   setIsLoading: (isLoading: boolean) => set(() => ({ isLoading })),
+  isProfileCreated: false,
+  setIsProfileCreated: (isProfileCreated: boolean) =>
+    set(() => ({ isProfileCreated })),
 });
