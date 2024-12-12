@@ -1,5 +1,7 @@
 # Hi, Jobsy!
 
+[![protocol.land](https://arweave.net/eZp8gOeR8Yl_cyH9jJToaCrt2He1PHr0pR4o-mHbEcY)](https://protocol.land/#/repository/MW_d-tNTHLFqwtlyXD7gdzKUpiHbOpymCGFO1b1kNkw)
+
 ![Jobsy Banner](https://github.com/TheoInTech/hijobsy-ai/blob/main/public/assets/banner.png?raw=true)
 
 Jobsy is revolutionizing how people find jobs and hire talent by removing the hassle of endless scrolling and overwhelming lists.
