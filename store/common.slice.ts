@@ -3,6 +3,7 @@ import { StateCreator } from "zustand";
 export enum EUserType {
   SEEKER = "seeker",
   RECRUITER = "recruiter",
+  RECOMMEND = "recommend",
 }
 
 export interface CommonSlice {

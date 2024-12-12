@@ -1,17 +1,33 @@
 import React from "react";
 import { Button } from "@/components/ui";
 import { useWallet } from "@/providers/wallet-provider";
+import { shortenAddress } from "@/lib/utils";
+import {
+  SignOut as SignOutIcon,
+  SignIn as SignInIcon,
+} from "@phosphor-icons/react";
 
 export const ConnectWalletButton = () => {
-  const { connectWallet, userAddress } = useWallet();
+  const { connectWallet, disconnectWallet, userAddress, isConnected } =
+    useWallet();
 
   const handleClick = async () => {
-    await connectWallet();
+    if (isConnected) {
+      await disconnectWallet();
+    } else {
+      await connectWallet();
+    }
   };
 
   return (
-    <Button variant="outline" className="py-6" onClick={handleClick}>
-      {userAddress ? userAddress : "Connect Wallet"}
+    <Button
+      variant="outline"
+      className="flex gap-2 items-center py-6"
+      onClick={handleClick}
+    >
+      {!isConnected && <SignInIcon size={16} />}
+      {userAddress ? shortenAddress(userAddress) : "Connect Wallet"}
+      {isConnected && <SignOutIcon size={16} />}
     </Button>
   );
 };

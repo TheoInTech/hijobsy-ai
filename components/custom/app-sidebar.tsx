@@ -8,7 +8,7 @@ import { ThreeDotsAnimated } from "@/components/custom";
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar className="p-2">
       <SidebarHeader>Your matches</SidebarHeader>
       <SidebarContent className="p-4 h-full">
         <div className="flex flex-col gap-4">

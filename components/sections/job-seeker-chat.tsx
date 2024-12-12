@@ -17,7 +17,7 @@ export const JobSeekerChat = () => {
   };
 
   const handleSuggestionClick = (suggestion: string) => {
-    setPrompt(suggestion);
+    setPrompt(`Hi, Jobsy! ${suggestion}`);
   };
 
   return (
@@ -36,7 +36,7 @@ export const JobSeekerChat = () => {
           </Button>
         )}
         <Textarea
-          placeholder="I'm looking for a [role] position in [industry]. I have [X] years of experience in [skills]. I'm passionate about [interests] and looking for opportunities that allow me to [goals]."
+          placeholder="Hi, Jobsy! I'm looking for a [role] position in [industry]. I have [X] years of experience in [skills]. I'm passionate about [interests] and looking for opportunities that allow me to [goals]."
           className="w-full rounded-lg bg-background min-h-56"
           value={prompt}
           onChange={handlePromptChange}

@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/custom/";
 import { WalletProvider } from "@/providers/wallet-provider";
-
+import { TooltipProvider } from "@/components/ui/tooltip";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -30,10 +30,12 @@ export default function App(props) {
         disableTransitionOnChange
       >
         <WalletProvider>
-          <SidebarProvider>
-            <AppSidebar />
-            <ArNext {...props}>{props.children}</ArNext>
-          </SidebarProvider>
+          <TooltipProvider>
+            <SidebarProvider>
+              <AppSidebar />
+              <ArNext {...props}>{props.children}</ArNext>
+            </SidebarProvider>
+          </TooltipProvider>
         </WalletProvider>
       </ThemeProvider>
     </main>

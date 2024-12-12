@@ -15,17 +15,17 @@ export const RecruiterChat = () => {
   };
 
   const handleSuggestionClick = (suggestion: string) => {
-    setPrompt(suggestion);
+    setPrompt(`Hi, Jobsy! ${suggestion}`);
   };
 
   return (
     <>
       <div className="flex flex-col gap-4 text-3xl font-semibold font-workSans">
-        Describe your perfect hire. We&apos;ll connect you.
+        Describe your perfect hire. We&apos;ll connect you!
       </div>
       <BackgroundGradient className="relative w-[720px] overflow-hidden min-h-56">
         <Textarea
-          placeholder="I'm looking to hire a [role] in [industry]. The ideal candidate has [X] years of experience in [skills]. We need someone who is passionate about [interests] and will help our company [goals]."
+          placeholder="Hi, Jobsy! I'm looking to hire a [role] in [industry]. The ideal candidate has [X] years of experience in [skills]. We need someone who is passionate about [interests] and will help our company [goals]."
           className="w-full rounded-lg bg-background min-h-56"
           value={prompt}
           onChange={handlePromptChange}

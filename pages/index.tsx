@@ -1,3 +1,5 @@
+"use client";
+
 import { ssr } from "arnext";
 import { useEffect, useState } from "react";
 
@@ -7,7 +9,12 @@ import {
   JobSeekerChat,
   RecruiterChat,
 } from "@/components/sections";
-import { Button } from "@/components/ui";
+import {
+  Button,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/store";
 import { EUserType } from "@/store/common.slice";
@@ -58,6 +65,17 @@ export default function Home({ _date = null }) {
           >
             Recruiter
           </Button>
+          <Tooltip>
+            <TooltipTrigger
+              className="px-3 py-1 text-sm font-semibold rounded-md bg-background/50 text-foreground/50"
+              disabled
+            >
+              Recommend
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Soon.</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
 
         {userType === EUserType.SEEKER && <JobSeekerChat />}
