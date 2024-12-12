@@ -1,6 +1,6 @@
 # Hi, Jobsy!
 
-[![protocol.land](https://arweave.net/eZp8gOeR8Yl_cyH9jJToaCrt2He1PHr0pR4o-mHbEcY)](https://protocol.land/#/repository/DQMgKXJQOUl54OFKIUmaoy-dsZ3uTq7Qp-s4UfZ-pPo)
+[![protocol.land](https://arweave.net/eZp8gOeR8Yl_cyH9jJToaCrt2He1PHr0pR4o-mHbEcY)](https://protocol.land/#/repository/44521559-8120-4b72-bb9b-595257f0c9ba)
 
 ![Jobsy Banner](https://github.com/TheoInTech/hijobsy-ai/blob/main/public/assets/banner.png?raw=true)
 
